@@ -4,15 +4,21 @@ class Message():
 	"""
 	>>> from tests import *
 	>>> print(m1.info_line())
-	<BLANKLINE>
 	John Doe <johndoe@mail.com> | test
 	"""
+
+	messages = []
+
 	def __init__(self, sender, receiver, subject, content):
 		self._sender = sender
 		self._receiver = receiver
 		self.subject = subject
 		self._content = content
 		self._read = False
+
+		Message.messages += [self]
+
+		#return self
 
 	def __repr__(self):
 		result = f'\n\nFROM: {print(self.sender)}'
@@ -28,7 +34,7 @@ class Message():
 		self._read = False
 
 	def info_line(self):
-		result = f'\n{self._sender} | {self.subject}'
+		result = f'{self._sender} | {self.subject}'
 		return result
 
 	def send(self):

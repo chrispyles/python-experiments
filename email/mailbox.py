@@ -8,7 +8,7 @@ class Mailbox():
 	>>> print(inbox(u2))
 	<BLANKLINE>
 	<BLANKLINE>
-	John Doe <johndoe@mail.com> | test
+	1. John Doe <johndoe@mail.com> | test
 	<BLANKLINE>
 	<BLANKLINE>
 	"""
@@ -28,13 +28,18 @@ class Mailbox():
 			self._is_sent = True
 
 	def __repr__(self):
+		i = 0
 		result = '\n'
 		for m in self.messages:
-			result += m.info_line()
+			result += f'\n{i+1}. ' + m.info_line()
+			i += 1
 		return result + '\n\n'
 
 	def add_to_box(self, email):
 		self.messages += [email]
+
+	def num_messages(self):
+		return len(self.messages)
 
 
 
