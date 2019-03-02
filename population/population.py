@@ -51,6 +51,13 @@ class Population:
 	def mode(self, attribute):
 		return self._df[attribute].mode()
 
+	def remove_member(self):
+		print('Which individual would you like to remove?')
+		for i in range(len(self._members)):
+			print(f'\n{i+1}. {self._members[i].primary_key}')
+		to_delete = int(input()) - 1
+		del self._members[to_delete]
+
 
 
 
